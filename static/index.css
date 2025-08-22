@@ -1,0 +1,35 @@
+:root {
+    --default-background: #f1efeb;
+    --default-primary: #ffa500;
+    --default-primary-alpha05: #ffa50088;
+}
+html, body {
+    padding: 0;
+    margin: 0;
+    background: var(--default-background);
+}
+
+h1,h2,h3,h4,h5,h6,p {
+    padding: 0;
+    margin: 0;
+}
+
+input {
+    padding: 0.5em 1em;
+    font-size: 1em;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    margin-bottom: 1em;
+    outline: none;
+    box-shadow: 0 0 4px #0003;
+    transition: 0s;
+}
+
+input:hover {
+    border-color: var(--default-primary-alpha05);
+}
+
+input:focus {
+    transition: .2s;
+    border-color: var(--default-primary);
+}
