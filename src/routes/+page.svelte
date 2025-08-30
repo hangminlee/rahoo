@@ -13,16 +13,34 @@
         <div class="menus">
             <ul>
                 <li>
-                    <a href="/"><span class="icon"><i class="fas fa-map-location-dot"></i></span><span class="text">식당 찾기</span></a>
+                    <a href="/"><span class="icon">돈코츠</span><span class="text">돈코츠라멘</span></a>
                 </li>
                 <li>
-                    <a href="/"><span class="icon"><i class="fas fa-pencil"></i></span><span class="text">리뷰 쓰기</span></a>
+                    <a href="/"><span class="icon">쇼유</span><span class="text">쇼유라멘</span></a>
                 </li> 
                 <li>
-                    <a href="/"><span class="icon"><i class="fas fa-star"></i></span><span class="text">즐겨찾기</span></a>
+                    <a href="/"><span class="icon">시오</span><span class="text">시오라멘</span></a>
                 </li>
                 <li>
-                    <a href="/"><span class="icon"><i class="fas fa-ellipsis"></i></span><span class="text">더보기</span></a>
+                    <a href="/"><span class="icon">미소</span><span class="text">미소라멘</span></a>
+                </li>
+                <li>
+                    <a href="/"><span class="icon">토리</span><span class="text">토리파이탄</span></a>
+                </li>
+                <li>
+                    <a href="/"><span class="icon">지로</span><span class="text">지로라멘</span></a>
+                </li>
+                <li>
+                    <a href="/"><span class="icon">탄탄</span><span class="text">탄탄멘</span></a>
+                </li>
+                <li>
+                    <a href="/"><span class="icon">츠케</span><span class="text">츠케멘</span></a>
+                </li>
+                <li>
+                    <a href="/"><span class="icon">우동</span><span class="text">우동</span></a>
+                </li>
+                <li>
+                    <a href="/"><span class="icon">소바</span><span class="text">소바</span></a>
                 </li>
             </ul>
         </div>
@@ -98,20 +116,9 @@
     </div>
 </div>
 <style>
-.wrapper {
-    background: var(--default-primary);
-}
 .header {
     padding: 1em 0;
     text-align: center;
-}
-.sub {
-    border-radius: 1rem 1rem 0 0;
-    background: var(--default-background);
-    max-width: 900px;
-    margin: 0 auto;
-    box-shadow: 0 0 4px #0003;
-    padding: 1em;
 }
 .search-sect input {
     max-width: 100%;
@@ -123,10 +130,11 @@
     list-style: none;
     margin: 0;
     padding: 1em 0;
-    display: flex;
+    display: grid;
     gap: 1em;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    grid-template-columns: repeat(5, 1fr);
 }
 .menus ul li {
     display: block;
@@ -139,8 +147,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2em;
-    color: #fada33;
+    font-size: 1.5em;
+    font-weight: 900;
+    color: #f1bd3a;
     width: 64px;
     height: 64px;
     border-radius: 1rem;
@@ -148,9 +157,7 @@
     background: white;
     margin: 0 auto;
     border: 2px solid transparent;
-}
-.menus .icon i {
-    filter: drop-shadow(0 2px 2px #0001);
+    text-align: center;
 }
 .menus .text {
     display: block;
@@ -221,5 +228,10 @@
     color: #fada33;
     display: flex;
 
+}
+@media screen and (max-width: 450px) {
+    .menus ul {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 </style>
