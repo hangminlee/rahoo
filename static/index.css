@@ -37,3 +37,9 @@ a, button {
     -webkit-tap-highlight-color: transparent;
     outline: none;
 }
+.sub {
+    border-radius: 1rem 1rem 0 0;
+    background: var(--default-background);
+    box-shadow: 0 0 4px #0003;
+    padding: 1em 1em 7em;
+}
