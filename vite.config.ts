@@ -31,6 +31,10 @@ export default defineConfig({
 					exclude: ['src/**/*.svelte.{test,spec}.{js,ts}']
 				}
 			}
-		]
+		],
+		allowedHosts: ['blog.hmlee.me']
+	},
+	server: {
+		allowedHosts: ['blog.hmlee.me']
 	}
 });
