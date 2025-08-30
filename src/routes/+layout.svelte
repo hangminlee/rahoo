@@ -1,7 +1,8 @@
-<script lang="ts">
+<script>
 	import favicon from '$lib/assets/favicon.svg';
+	import Navigator from './navigator.svelte';
 
-	let { children } = $props();
+	let { data, children } = $props();
 </script>
 
 <svelte:head>
@@ -10,3 +11,4 @@
 <div class="container">
 	{@render children()}
 </div>
+<Navigator />
