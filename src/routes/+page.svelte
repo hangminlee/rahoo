@@ -1,98 +1,5 @@
 <script>
-  import { onMount } from "svelte";
-
-    let mouseX = $state(0);
-    let bannerSwiping = $state(false);
-    let banner = $state();
-    let activeBanner = $state();
-
-    /** @type {IntersectionObserver} */
-    let bannerScroll;
-
-    /**
-     * @typedef {{
-     * storeName: string,
-     * href: string,
-     * element: undefined | HTMLElement
-     * }} BannerData
-     */
-
-     /** @type Array<BannerData> */
-    let bannerData = $state([
-        {
-            storeName: "하쿠텐",
-            href: "/",
-            element: undefined
-        },
-        {
-            storeName: "류진",
-            href: "/",
-            element: undefined
-        },
-        {
-            storeName: "566라멘",
-            href: "/",
-            element: undefined
-        },
-        {
-            storeName: "이치란라멘",
-            href: "/",
-            element: undefined
-        }
-    ]);
-    
-    $effect(()=>{
-        if (bannerSwiping) {
-            window.addEventListener('pointermove',swipeBanner);
-            window.addEventListener('pointerup',swipeBannerClear);
-        } else {
-            window.removeEventListener('pointermove',swipeBanner);
-            window.removeEventListener('pointerup',swipeBannerClear);
-        }
-    });
-
-    onMount(()=>{
-        bannerScroll = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.intersectionRatio > 0.4) {
-                    activeBanner = entry.target;
-                }
-            })
-        },{
-            threshold: 0.4
-        });
-    })
-
-    function swipeBannerStart() {
-        bannerSwiping = true;
-    }
-
-    /**
-     * 
-     * @param {PointerEvent} e
-     */
-    function swipeBanner (e) {
-        if (bannerSwiping) {
-            mouseX += e.movementX;
-            banner.scrollBy(-e.movementX, 0);
-            bannerData.forEach(entry=>{
-                if (!entry.element) return;
-                bannerScroll.observe(entry.element);
-            });
-        }
-    }
-    function swipeBannerClear() {
-        bannerSwiping = false;
-        bannerData.forEach(entry=>{
-            if (!entry.element) return;
-            bannerScroll.unobserve(entry.element);
-        });
-        banner.scrollTo({
-            top: 0,
-            left: activeBanner.offsetLeft,
-            behavior: "smooth"
-        });
-    }
+    import Banner from "./banner.svelte";
 </script>
 <div class="wrapper">
     <div class="header">
@@ -119,13 +26,7 @@
                 </li>
             </ul>
         </div>
-        <div class="banner" onpointerdown={swipeBannerStart} bind:this={banner}>
-            {#each bannerData as data}
-                <a class="banner-item" href="{data.href}" bind:this={data.element}>
-                    <div class="store-name">{data.storeName}</div>
-                </a>
-            {/each}
-        </div>
+        <Banner />
         <div class="reviews">
             <h2>실시간 리뷰</h2>
             <div class="review">
@@ -258,37 +159,6 @@
 }
 .menus ul li a:hover .icon {
     border: 2px solid #fada33;
-}
-.banner {
-    width: 100%;
-    white-space: nowrap;
-    overflow-x: hidden;
-    border-radius: 1em;
-    filter: drop-shadow(0 0 2px #0003);
-    touch-action: none;
-}
-.banner a {
-    display: inline-flex;
-    width: 100%;
-    background: white;
-    border-radius: 1em;
-    height: 200px;
-    margin-right: 1em;
-    -webkit-user-drag: none;
-    text-decoration: none;
-}
-.banner a:nth-last-child(1) {
-    margin-right: 0;
-}
-.banner .store-name {
-    height: 100%;
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    font-size: 3em;
-    color: black;
-    font-weight: 900;
 }
 .reviews {
     margin-top: 1em;
