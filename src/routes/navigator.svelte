@@ -13,7 +13,10 @@
     <ul>
         {#each menus as menu}
         <li>
-            <a href="{menu.href}" class:active={menu.path===page.data.slug}><span class="icon"><i class="{menu.icon}"></i></span><span class="text">{menu.label}</span></a>
+            <a href="{menu.href}" class:active={menu.path===page.data.slug}>
+                <span class="icon"><i class="{menu.icon}"></i></span>
+                <span class="text">{menu.label}</span>
+            </a>
         </li>
         {/each}
     </ul>
@@ -30,6 +33,8 @@
         overflow: hidden;
         box-shadow: 0 2px 4px #0003;
         backdrop-filter: blur(4px);
+        font-size: clamp(12px, 3vw, 16px);
+        view-transition-name: navigator;
     }
     ul {
         list-style: none;
@@ -57,7 +62,7 @@
         font-size: 2em;
         color: #0002;
         width: 100%;
-        height: 3rem;
+        height: 1.5em;
         margin: 0 auto;
         transition: .1s;
     }
