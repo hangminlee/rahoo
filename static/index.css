@@ -33,3 +33,7 @@ input:focus {
     transition: .2s;
     border-color: var(--default-primary);
 }
+a, button {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
