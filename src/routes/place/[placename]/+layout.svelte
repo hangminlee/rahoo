@@ -4,6 +4,3 @@
 <div class="sub">
     {@render children()}
 </div>
-<style>
-
-</style>
