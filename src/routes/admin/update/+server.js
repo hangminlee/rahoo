@@ -15,7 +15,7 @@ export async function POST () {
             console.log('stderr:',stderr);
             if (error !== null) console.log('exec error:', error);
         });
-    console.log('child:', child);
+    console.log('child:' + child);
     console.log('adsfasdfasdfasdfa');
 
     return json({data: 'eof'},{ status: 200});
