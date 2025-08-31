@@ -10,7 +10,7 @@ export async function POST () {
         {
             timeout: 60000
         });
-    console.log('child:' + child);
+    console.log('child: ', child);
     console.log('adsfasdfasdfasdfa');
 
     return json({data: 'eof'},{ status: 200});
