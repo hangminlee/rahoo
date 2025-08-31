@@ -9,6 +9,9 @@
     let currBanner = $state(0);
     let bannerChanged = $state(true);
     let pointerPos = $state([0, 0]);
+    let preBanner = $state();
+    let postBanner = $state();
+    let pseudoBanner = $state();
 
     const observeThreshold = 0.4;
     const swipeThreshold = 10;
@@ -53,7 +56,7 @@
             window.addEventListener('pointermove',swipeBanner);
             window.addEventListener('pointerup',swipeBannerClear);
         } else {
-            alignBanner('smooth');
+            alignBanner('smooth',activeBanner==-1?pseudoBanner:undefined);
             window.removeEventListener('pointermove',swipeBanner);
             window.removeEventListener('pointerup',swipeBannerClear);
         }
@@ -84,10 +87,20 @@
                 if (entry.intersectionRatio > observeThreshold && activeBanner == currBanner) {
                     thresholdOver = false;
                 }
+                if (entry.intersectionRatio > 0.9) {
+                    if (entry.target == preBanner) {
+                        alignBanner("auto", bannerData[bannerData.length - 1].element?.scrollLeft);
+                    } else if (entry.target == postBanner) {
+                        alignBanner("auto", bannerData[0].element?.scrollLeft);
+                    }
+                }
             })
         },{
-            threshold: observeThreshold
+            threshold: [observeThreshold, 1]
         });
+
+        bannerScroll.observe(preBanner);
+        bannerScroll.observe(postBanner);
     });
 
     onDestroy(()=>{
@@ -123,29 +136,39 @@
     function swipeBannerClear() {
         const nextIndex = movementDelta < 0 ? activeBanner + 1 : activeBanner -1;
         bannerSwiping = false;
-        bannerScroll.disconnect();
+        bannerData.forEach(entry=>{
+            if (!entry.element) return;
+            bannerScroll.unobserve(entry.element);
+        });
         if (!thresholdOver && Math.abs(movementDelta) > swipeThreshold && banner.scrollLeft != 0 && banner.scrollLeft != banner.scrollWidth - banner.clientWidth) {
             if (nextIndex >= 0 && nextIndex < bannerData.length) {
                 activeBanner = nextIndex;
+            } else {
+                if (movementDelta < 0) { // 왼쪽으로 넘기는 상황
+                    pseudoBanner = bannerData[bannerData.length - 1].element?.nextElementSibling?.scrollLeft
+                } else { // 오른쪽으로 넘기는 상황
+                    pseudoBanner = bannerData[0].element?.previousElementSibling?.scrollLeft
+                }
+                activeBanner = -1;
             }
         }
         movementDelta = 0;
     }
 
-    function alignBanner (behavior='auto') {
+    function alignBanner (behavior='auto', customLeft=undefined) {
         const padding = Math.floor(banner.clientWidth * 0.1) / 2;
         console.log(padding);
         bannerSwiping = false;
         banner.scrollTo({
             top: 0,
-            left: (bannerData[activeBanner].element?.offsetLeft??0) - padding,
+            left: customLeft??(bannerData[activeBanner].element?.offsetLeft??0) - padding,
             behavior: behavior
-        })
+        });
     }
 </script>
 <svelte:window on:resize={()=>alignBanner()} on:scroll={()=>alignBanner("smooth")}/>
 <div class="banner" onpointerdown={swipeBannerStart} bind:this={banner}>
-    <a class="banner-item" href="{bannerData[bannerData.length-1].href}">
+    <a class="banner-item pre" href="{bannerData[bannerData.length-1].href}" bind:this={preBanner}>
         <div class="store-name">{bannerData[bannerData.length-1].storeName}</div>
     </a>
     {#each bannerData as data}
@@ -157,7 +180,7 @@
             <div class="store-name">{data.storeName}</div>
         </a>
     {/each}
-    <a class="banner-item" href="{bannerData[0].href}">
+    <a class="banner-item post" href="{bannerData[0].href}" bind:this={postBanner}>
         <div class="store-name">{bannerData[0].storeName}</div>
     </a>
 </div>
