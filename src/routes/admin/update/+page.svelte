@@ -33,7 +33,6 @@
 <style>
     .sub {
         display: flex;
-        width: 100%;
         height: 100dvh;
         align-items: center;
         justify-content: center;
