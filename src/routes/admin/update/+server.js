@@ -1,8 +1,8 @@
 import {json} from '@sveltejs/kit';
 import {exec} from 'child_process';
-import {util} from 'util';
+import {promisify} from 'util';
 
-const exexe = util.promisify(exec);
+const exexe = promisify(exec);
 
 export async function POST () {
     let child = await exexe(
