@@ -134,6 +134,7 @@
 
     function alignBanner (behavior='auto') {
         const padding = (banner.clientWidth * 0.1) / 2;
+        console.log(padding);
         bannerSwiping = false;
         banner.scrollTo({
             top: 0,
