@@ -1,8 +1,11 @@
 import {json} from '@sveltejs/kit';
 import {exec} from 'child_process';
+import {util} from 'util';
+
+const exexe = util.promisify(exec);
 
 export async function POST () {
-    let child = await exec(
+    let child = await exexe(
         "pwd",
         {
             timeout: 60000
@@ -12,7 +15,7 @@ export async function POST () {
             console.log('stderr:',stderr);
             if (error !== null) console.log('exec error:', error);
         });
-    console.log('child:', await child);
+    console.log('child:', child);
     console.log('adsfasdfasdfasdfa');
 
     return json({data: 'eof'},{ status: 200});
