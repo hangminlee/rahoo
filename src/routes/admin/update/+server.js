@@ -9,11 +9,6 @@ export async function POST () {
         "pwd",
         {
             timeout: 60000
-        },
-        (error, stdout, stderr) => {
-            console.log('stdout:',stdout);
-            console.log('stderr:',stderr);
-            if (error !== null) console.log('exec error:', error);
         });
     console.log('child:' + child);
     console.log('adsfasdfasdfasdfa');
