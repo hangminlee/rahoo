@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
 
     onMount(()=>{
-        fetch("./",{
+        fetch("/admin/update",{
             "method": "POST",
             "headers": {
                 "Content-Type": "application/json"
