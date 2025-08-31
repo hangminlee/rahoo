@@ -13,6 +13,7 @@ export async function POST () {
             if (error !== null) console.log('exec error:', error);
         });
     console.log('child:', child);
+    console.log('adsfasdfasdfasdfa');
 
     return json({data: 'eof'},{ status: 200});
 }
