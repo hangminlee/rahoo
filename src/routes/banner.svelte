@@ -133,16 +133,20 @@
     }
 
     function alignBanner (behavior='auto') {
+        const padding = (banner.clientWidth * 0.1) / 2;
         bannerSwiping = false;
         banner.scrollTo({
             top: 0,
-            left: bannerData[activeBanner].element?.offsetLeft,
+            left: bannerData[activeBanner].element?.offsetLeft + padding,
             behavior: behavior
         })
     }
 </script>
 <svelte:window on:resize={()=>alignBanner()} on:scroll={()=>alignBanner("smooth")}/>
 <div class="banner" onpointerdown={swipeBannerStart} bind:this={banner}>
+    <a class="banner-item" href="{bannerData[bannerData.length-1].href}" bind:this={bannerData[bannerData.length-1].element}>
+        <div class="store-name">{bannerData[bannerData.length-1].storeName}</div>
+    </a>
     {#each bannerData as data}
         <a class="banner-item" href="{data.href}" bind:this={data.element} onclick={(e)=>{
             const dx = Math.abs(e.screenX - pointerPos[0]);
@@ -152,6 +156,9 @@
             <div class="store-name">{data.storeName}</div>
         </a>
     {/each}
+    <a class="banner-item" href="{bannerData[0].href}" bind:this={bannerData[0].element}>
+        <div class="store-name">{bannerData[0].storeName}</div>
+    </a>
 </div>
 <div class="banner-index" class:active={bannerChanged}>
     <span>{activeBanner + 1} / {bannerData.length}</span>
@@ -185,7 +192,7 @@
     }
     .banner a {
         display: inline-flex;
-        width: 100%;
+        width: 90%;
         background: white;
         border-radius: 1em;
         height: 200px;
