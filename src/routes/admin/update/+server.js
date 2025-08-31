@@ -6,12 +6,11 @@ const exexe = promisify(exec);
 
 export async function POST () {
     let child = await exexe(
-        "pwd",
+        "git pull",
         {
             timeout: 60000
         });
     console.log('child: ', child);
-    console.log('adsfasdfasdfasdfa');
 
     return json({data: 'eof'},{ status: 200});
 }
