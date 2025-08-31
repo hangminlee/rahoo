@@ -159,6 +159,7 @@
 
     function alignBanner (behavior='auto', customLeft=undefined) {
         const padding = Math.floor(banner.clientWidth * 0.1) / 2;
+        console.log(customLeft);
         bannerSwiping = false;
         banner.scrollTo({
             top: 0,
