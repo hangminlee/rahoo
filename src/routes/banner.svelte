@@ -4,6 +4,7 @@
     let bannerSwiping = $state(false);
     let banner = $state();
     let activeBanner = $state(0);
+    $inspect(activeBanner);
     let movementDelta = $state(0);
     let thresholdOver = $state(false);
     let currBanner = $state(0);
