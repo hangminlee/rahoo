@@ -11,11 +11,12 @@ export async function POST () {
             timeout: 60000
         }
     );
+    
+    console.log("update!!!!!!!!");
 
     if (child.stderr) return json({data: 'Update Failed'}, {statue: 500});
     if (child.stdout == 'Already up to date.\n') return json({data: child.stdout}, {status: 200});
 
-    console.log("update");
 
     return json({data: child.stdout},{status: 200});
 }
