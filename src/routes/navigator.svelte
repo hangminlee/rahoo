@@ -28,7 +28,7 @@
         left: 50%;
         transform: translateX(-50%);
         width: calc(100vw - 20px);
-        background: #fff6;
+        background: #fffa;
         border-radius: 999px;
         overflow: hidden;
         box-shadow: 0 2px 4px #0003;

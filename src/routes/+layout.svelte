@@ -56,11 +56,13 @@
 		animation-name: old;
 		z-index: 0;
 		position: fixed;
+		top: 0;
 	}
 	::view-transition-new(container) {
 		animation-name: new;
 		z-index: 1;
 		position: fixed;
+		top: 0;
 	}
 	.main {
 		background: var(--default-primary);
