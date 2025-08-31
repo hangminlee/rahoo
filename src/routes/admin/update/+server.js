@@ -13,6 +13,7 @@ export async function POST () {
     );
 
     console.log("update!!!!!!!!");
+    console.log("update!!!!!!!!");
     console.log(child);
 
     if (child.stderr) return json({data: 'Update Failed'}, {statue: 500});
