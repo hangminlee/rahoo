@@ -124,6 +124,7 @@
     z-index: 0;
 }
 .sub {
+    position: relative;
     z-index: 1;
 }
 .search-sect input {
