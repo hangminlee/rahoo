@@ -1,7 +1,7 @@
 import {json} from '@sveltejs/kit';
 import {exec} from 'child_process';
 
-async function POST () {
+export async function POST () {
     let child = exec("pwd", (error, stdout, stderr) => {
         console.log('stdout:',stdout);
         console.log('stderr:',stderr);
