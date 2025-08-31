@@ -138,7 +138,7 @@
         bannerSwiping = false;
         banner.scrollTo({
             top: 0,
-            left: bannerData[activeBanner].element?.offsetLeft + padding,
+            left: bannerData[activeBanner].element?.offsetLeft + Math.floor(padding),
             behavior: behavior
         })
     }
