@@ -9,8 +9,11 @@ export async function POST () {
         "git pull",
         {
             timeout: 60000
-        });
-    console.log('child: ', child);
+        }
+    );
 
-    return json({data: 'eof'},{ status: 200});
+    if (child.stderr) return json({data: 'Update Failed'}, {statue: 500});
+    if (child.stdout == 'Already up to date.\n') return json({data: child.stdout}, {status: 304});
+
+    return json({data: child.stdout},{status: 301});
 }
