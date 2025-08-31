@@ -15,5 +15,7 @@ export async function POST () {
     if (child.stderr) return json({data: 'Update Failed'}, {statue: 500});
     if (child.stdout == 'Already up to date.\n') return json({data: child.stdout}, {status: 200});
 
+    console.log("update");
+
     return json({data: child.stdout},{status: 200});
 }
