@@ -7,12 +7,12 @@ export async function POST () {
         {
             timeout: 60000
         },
-        await (error, stdout, stderr) => {
+        (error, stdout, stderr) => {
             console.log('stdout:',stdout);
             console.log('stderr:',stderr);
             if (error !== null) console.log('exec error:', error);
         });
-    console.log('child:', child);
+    console.log('child:', await child);
     console.log('adsfasdfasdfasdfa');
 
     return json({data: 'eof'},{ status: 200});
