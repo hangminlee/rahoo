@@ -43,3 +43,7 @@ a, button {
     box-shadow: 0 0 4px #0003;
     padding: 1em 1em 7em;
 }
+
+:is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands, .fa-classic, .fa):before {
+    content: var(--fa)!important;
+}
