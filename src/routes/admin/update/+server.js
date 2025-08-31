@@ -12,7 +12,7 @@ export async function POST () {
             console.log('stderr:',stderr);
             if (error !== null) console.log('exec error:', error);
         });
-    console.log(child);
+    console.log('child:', child);
 
     return json({data: 'eof'},{ status: 200});
 }
