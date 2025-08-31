@@ -93,10 +93,11 @@
                     } else if (entry.target == postBanner) {
                         alignBanner("auto", bannerData[0].element?.scrollLeft);
                     }
+                    console.log("!!!");
                 }
             })
         },{
-            threshold: [observeThreshold, 1]
+            threshold: [observeThreshold, 0.9]
         });
 
         bannerScroll.observe(preBanner);
@@ -157,7 +158,6 @@
 
     function alignBanner (behavior='auto', customLeft=undefined) {
         const padding = Math.floor(banner.clientWidth * 0.1) / 2;
-        console.log(padding);
         bannerSwiping = false;
         banner.scrollTo({
             top: 0,
