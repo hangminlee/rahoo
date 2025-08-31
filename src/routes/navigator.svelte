@@ -35,6 +35,7 @@
         backdrop-filter: blur(4px);
         font-size: clamp(12px, 3vw, 16px);
         view-transition-name: navigator;
+        z-index: 99999;
     }
     ul {
         list-style: none;
