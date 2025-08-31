@@ -133,12 +133,12 @@
     }
 
     function alignBanner (behavior='auto') {
-        const padding = (banner.clientWidth * 0.1) / 2;
+        const padding = Math.floor(banner.clientWidth * 0.1) / 2;
         console.log(padding);
         bannerSwiping = false;
         banner.scrollTo({
             top: 0,
-            left: bannerData[activeBanner].element?.offsetLeft + Math.floor(padding),
+            left: bannerData[activeBanner].element?.offsetLeft,
             behavior: behavior
         })
     }
