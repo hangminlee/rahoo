@@ -14,7 +14,9 @@
             if (response.ok) {
                 const result = await response.json();
                 status = result.data;
-                goto("/");
+                setTimeout(()=>{
+                    goto("/");
+                },1000);
             }
         } catch (error) {
             console.error(error);
@@ -25,6 +27,7 @@
     <p>업데이트 중...</p>
     {#if status !== ''}
     <p>{status}</p>
+    <p>곧 메인페이지로 넘어갑니당.</p>
     {/if}
 </div>
 <style>
