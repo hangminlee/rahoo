@@ -141,7 +141,7 @@
     gap: 1em;
     align-items: center;
     justify-content: space-between;
-    grid-template-columns: repeat(5, fit-content);
+    grid-template-columns: repeat(5, max-content);
 }
 .menus ul li {
     display: block;
