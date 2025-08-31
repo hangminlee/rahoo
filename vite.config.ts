@@ -32,9 +32,11 @@ export default defineConfig({
 				}
 			}
 		],
-		allowedHosts: ['blog.hmlee.me']
+		allowedHosts: ['blog.hmlee.me'],
+		historyApiFallback: true
 	},
 	server: {
-		allowedHosts: ['blog.hmlee.me']
+		allowedHosts: ['blog.hmlee.me'],
+		historyApiFallback: true
 	}
 });
