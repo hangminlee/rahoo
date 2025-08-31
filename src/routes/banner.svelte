@@ -90,10 +90,11 @@
                 if (entry.intersectionRatio > 0.9) {
                     if (entry.target == preBanner) {
                         alignBanner("auto", bannerData[bannerData.length - 1].element?.scrollLeft);
+                        console.log("!!!");
                     } else if (entry.target == postBanner) {
                         alignBanner("auto", bannerData[0].element?.scrollLeft);
+                        console.log("!!!!!!");
                     }
-                    console.log("!!!");
                 }
             })
         },{
