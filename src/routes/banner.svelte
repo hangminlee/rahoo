@@ -145,7 +145,7 @@
 </script>
 <svelte:window on:resize={()=>alignBanner()} on:scroll={()=>alignBanner("smooth")}/>
 <div class="banner" onpointerdown={swipeBannerStart} bind:this={banner}>
-    <a class="banner-item" href="{bannerData[bannerData.length-1].href}" bind:this={bannerData[bannerData.length-1].element}>
+    <a class="banner-item" href="{bannerData[bannerData.length-1].href}">
         <div class="store-name">{bannerData[bannerData.length-1].storeName}</div>
     </a>
     {#each bannerData as data}
@@ -157,7 +157,7 @@
             <div class="store-name">{data.storeName}</div>
         </a>
     {/each}
-    <a class="banner-item" href="{bannerData[0].href}" bind:this={bannerData[0].element}>
+    <a class="banner-item" href="{bannerData[0].href}">
         <div class="store-name">{bannerData[0].storeName}</div>
     </a>
 </div>
