@@ -121,7 +121,10 @@
     text-align: center;
     position:sticky;
     top: 0;
-    z-index: -1;
+    z-index: 0;
+}
+.sub {
+    z-index: 1;
 }
 .search-sect input {
     max-width: 100%;
