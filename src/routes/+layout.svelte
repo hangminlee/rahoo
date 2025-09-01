@@ -1,5 +1,5 @@
 <script>
-  import { onNavigate } from '$app/navigation';
+	import { onNavigate } from '$app/navigation';
 	import favicon from '$lib/assets/favicon.svg';
 	import Navigator from './navigator.svelte';
 
@@ -20,17 +20,17 @@
 <svelte:head>
 	<link rel="icon" href={favicon} />
 </svelte:head>
+<Navigator />
 <div class="main">
 	<div class="container">
 		{@render children()}
 	</div>
 </div>
-<Navigator />
 <style>
 	@view-transition {
 		navigation: auto;
 	}
-
+	
 	@keyframes old {
 		from {
 			transform: translateX(0);

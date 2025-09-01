@@ -27,7 +27,7 @@
         bottom: 10px;
         left: 50%;
         transform: translateX(-50%);
-        width: calc(100vw - 20px);
+        width: calc(100vw - clamp(10px, 4vw, 40px));
         background: #fffa;
         border-radius: 999px;
         overflow: hidden;
@@ -84,5 +84,11 @@
     .text {
         display: block;
         text-align: center;
+    }
+    ::view-transition-old(navigator) {
+        animation-duration: 0s;
+    }
+    ::view-transition-new(navigator) {
+        animation-duration: 0s;
     }
 </style>
