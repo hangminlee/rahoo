@@ -276,7 +276,7 @@
         background: white;
         border-radius: 1em;
         height: 200px;
-        margin-right: 1em;
+        margin-right: clamp(8px, 2vw, 1em);
         -webkit-user-drag: none;
         text-decoration: none;
         font-size: 1rem;
