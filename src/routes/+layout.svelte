@@ -68,7 +68,7 @@
 		background: var(--default-primary);
 		height: 100svh;
 		width: 100%;
-		position:fixed;
+		position: fixed;
 		top: 0;
 		left: 0;
 		overflow-y: auto;
