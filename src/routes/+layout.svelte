@@ -66,10 +66,11 @@
 	}
 	.main {
 		background: var(--default-primary);
+		max-height: 100svh;
 	}
 	.container {
 		position: relative;
-    	max-width: 900px;
+		max-width: 900px;
 		margin: 0 auto;
 		view-transition-name: container;
 	}
