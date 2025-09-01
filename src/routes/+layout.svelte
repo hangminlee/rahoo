@@ -66,7 +66,13 @@
 	}
 	.main {
 		background: var(--default-primary);
-		height: 99svh;
+		height: 100svh;
+		width: 100%;
+		position:fixed;
+		top: 0;
+		left: 0;
+		overflow-y: auto;
+		overflow-x: hidden;
 	}
 	.container {
 		position: relative;
