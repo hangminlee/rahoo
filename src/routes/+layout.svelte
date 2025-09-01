@@ -65,6 +65,10 @@
 		top: 0;
 	}
 	.main {
+		position: fixed;
+		width: 100%;
+		top: 0;
+		left: 0;
 		background: var(--default-primary);
 		height: 100svh;
 	}
