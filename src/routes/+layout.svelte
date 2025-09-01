@@ -65,12 +65,8 @@
 		top: 0;
 	}
 	.main {
-		position: absolute;
-		width: 100%;
-		top: 0;
-		left: 0;
 		background: var(--default-primary);
-		height: 100svh;
+		height: 99svh;
 	}
 	.container {
 		position: relative;
