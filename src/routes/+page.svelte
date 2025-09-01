@@ -1,5 +1,18 @@
 <script>
     import Banner from "./banner.svelte";
+
+    const genre = [
+        { 'icon': '돈코츠', 'label': '돈코츠라멘', 'href': '/genre/tonkotsu' },
+        { 'icon': '쇼유', 'label': '쇼유라멘', 'href': '/genre/syouyuu' },
+        { 'icon': '시오', 'label': '시오라멘', 'href': '/genre/sio' },
+        { 'icon': '미소', 'label': '미소라멘', 'href': '/genre/miso' },
+        { 'icon': '토리', 'label': '토리파이탄', 'href': '/genre/tori' },
+        { 'icon': '지로', 'label': '지로라멘', 'href': '/genre/jirou' },
+        { 'icon': '이에케', 'label': '이에케라멘', 'href': '/genre/ieke' },
+        { 'icon': '탄탄', 'label': '탄탄라멘', 'href': '/genre/tantan' },
+        { 'icon': '츠케', 'label': '츠케라멘', 'href': '/genre/tsuke' },
+        { 'icon': '우&소', 'label': '우동 & 소바 ', 'href': '/genre/udon' },
+    ]
 </script>
 <div class="wrapper">
     <div class="header">
@@ -12,36 +25,11 @@
         </div>
         <div class="menus">
             <ul>
+                {#each genre as menu}
                 <li>
-                    <a href="/"><span class="icon">돈코츠</span><span class="text">돈코츠라멘</span></a>
-                </li>
-                <li>
-                    <a href="/"><span class="icon">쇼유</span><span class="text">쇼유라멘</span></a>
-                </li> 
-                <li>
-                    <a href="/"><span class="icon">시오</span><span class="text">시오라멘</span></a>
-                </li>
-                <li>
-                    <a href="/"><span class="icon">미소</span><span class="text">미소라멘</span></a>
-                </li>
-                <li>
-                    <a href="/"><span class="icon">토리</span><span class="text">토리파이탄</span></a>
-                </li>
-                <li>
-                    <a href="/"><span class="icon">지로</span><span class="text">지로라멘</span></a>
-                </li>
-                <li>
-                    <a href="/"><span class="icon">탄탄</span><span class="text">탄탄멘</span></a>
-                </li>
-                <li>
-                    <a href="/"><span class="icon">츠케</span><span class="text">츠케멘</span></a>
-                </li>
-                <li>
-                    <a href="/"><span class="icon">우동</span><span class="text">우동</span></a>
-                </li>
-                <li>
-                    <a href="/"><span class="icon">소바</span><span class="text">소바</span></a>
-                </li>
+                    <a href="{menu.href}"><span class="icon">{menu.icon}</span><span class="text">{menu.label}</span></a>
+                </li>                    
+                {/each}
             </ul>
         </div>
         <Banner />
