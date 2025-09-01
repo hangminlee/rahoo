@@ -67,7 +67,6 @@
 	.main {
 		background: var(--default-primary);
 		height: 100svh;
-		overflow: hidden;
 	}
 	.container {
 		position: relative;
