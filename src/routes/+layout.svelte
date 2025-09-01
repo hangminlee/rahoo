@@ -85,6 +85,6 @@
 		"top"
 		"sub";
 		grid-template-rows: min-content 1fr;
-		grid-template-columns: minmax(900px, 1fr);
+		grid-template-columns: min(900px, 100vw);
 	}
 </style>
