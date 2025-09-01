@@ -181,8 +181,10 @@
                 activeBanner = nextIndex;
             } else {
                 if (movementDelta < 0) { // 왼쪽으로 넘기는 상황
+                    // @ts-ignore
                     pseudoBanner = bannerData[bannerData.length - 1].element?.nextElementSibling?.offsetLeft
                 } else { // 오른쪽으로 넘기는 상황
+                    // @ts-ignore
                     pseudoBanner = bannerData[0].element?.previousElementSibling?.offsetLeft
                 }
                 activeBanner = -1;
@@ -190,6 +192,9 @@
         }
         alignBanner('smooth',activeBanner==-1?pseudoBanner:undefined);
         movementDelta = 0;
+        smoothScrollListener(()=>bannerPos).then(()=>{
+            setTimeout(()=>{currBanner = activeBanner;},10);
+        })
     }
 
     /**
@@ -234,7 +239,7 @@
     </span>
 </div>
 <div class="banner-index" class:active={bannerChanged}>
-    <span>{activeBanner + 1} / {bannerData.length}</span>
+    <span>{currBanner + 1} / {bannerData.length}</span>
 </div>
 <style>
     .banner-index {
