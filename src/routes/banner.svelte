@@ -164,6 +164,10 @@
      * @param {PointerEvent} e
      */
     function swipeBanner (e) {
+        if (!e.target.closest('.banner')) {
+            bannerSwiping = false;
+            alignBanner("smooth");
+        }
         if (!bannerSwiping) return;
         if (!banner) return;
         banner.scrollBy(-e.movementX, 0);
