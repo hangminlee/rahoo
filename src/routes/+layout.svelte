@@ -66,7 +66,8 @@
 	}
 	.main {
 		background: var(--default-primary);
-		max-height: 100svh;
+		height: 100svh;
+		overflow: hidden;
 	}
 	.container {
 		position: relative;
