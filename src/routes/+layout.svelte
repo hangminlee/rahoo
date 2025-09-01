@@ -66,7 +66,7 @@
 	}
 	.main {
 		background: var(--default-primary);
-		height: 100svh;
+		height: calc(100svh - 1px);
 		width: 100%;
 		position: fixed;
 		top: 0;
