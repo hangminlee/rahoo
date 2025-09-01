@@ -110,6 +110,14 @@
     position:sticky;
     top: 0;
     z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5em;
+    flex-direction: column;
+}
+h1 {
+    font-size: 3em;
 }
 .sub {
     position: relative;
