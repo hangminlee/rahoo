@@ -1,17 +1,38 @@
 <script>
 	import { onNavigate } from '$app/navigation';
 	import favicon from '$lib/assets/favicon.svg';
+	import { onMount } from 'svelte';
 	import Navigator from './navigator.svelte';
 
-	let { data, children } = $props();
+	let { children } = $props();
+
+	let touchX = $state(-1);
+	let screenX = $state();
+	let isSwiping = $state(false);
+
+	onMount(()=>{
+		screenX = window.innerWidth;
+	});
 
 	onNavigate(async (navigation)=>{
 		if (!document.startViewTransition) return;
+		if (touchX != -1 && isSwiping) {
+			if (touchX < 25) {
+				touchX = -1;
+				isSwiping = false;
+				return;
+			} else if (touchX > (screenX - 25)) {
+				touchX = -1;
+				isSwiping = false;
+				return;
+			}
+		}
 
 		return new Promise((resolve)=>{
 			document.startViewTransition(async()=>{
 				resolve();
 				await navigation.complete;
+				touchX = -1;
 			})
 		})
 	})
@@ -20,6 +41,7 @@
 <svelte:head>
 	<link rel="icon" href={favicon} />
 </svelte:head>
+<svelte:window onpointerdown={(e)=>{touchX = e.screenX; isSwiping = false}} onpointermove={(e)=>{isSwiping = true}}/>
 <Navigator />
 <div class="main">
 	<div class="container">
