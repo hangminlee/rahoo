@@ -73,11 +73,18 @@
 		left: 0;
 		overflow-y: auto;
 		overflow-x: hidden;
+		display: grid;
 	}
 	.container {
 		position: relative;
 		max-width: 900px;
 		margin: 0 auto;
 		view-transition-name: container;
+		display: grid;
+		grid-template-areas:
+		"top"
+		"sub";
+		grid-template-rows: min-content 1fr;
+		grid-template-columns: minmax(900px, 1fr);
 	}
 </style>

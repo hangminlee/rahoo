@@ -1,11 +1,9 @@
 <script>
     let { data } = $props();
 </script>
-<div>
-    <h1>너무나 놀라운... {data.title}</h1>
-    <div class="sub">
-        서브컨텐츠
-    </div>
+<h1>너무나 놀라운... {data.title}</h1>
+<div class="sub">
+    서브컨텐츠
 </div>
 <style>
     h1 {
