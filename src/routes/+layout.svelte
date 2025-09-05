@@ -1,8 +1,9 @@
 <script>
-	import { onNavigate } from '$app/navigation';
+	import { beforeNavigate, onNavigate } from '$app/navigation';
 	import favicon from '$lib/assets/favicon.svg';
 	import { onMount } from 'svelte';
 	import Navigator from './navigator.svelte';
+	import { page } from '$app/state';
 
 	let { children } = $props();
 
@@ -14,14 +15,28 @@
 
 	let mainElement = $state();
 
+	let route = $derived(page.url.pathname.replace(/\/$/,'').split("/"));
+
+	let isBack = $state(false);
+
 	onMount(()=>{
 		screenX = window.innerWidth;
 	});
 
+	beforeNavigate((navigation)=>{
+		/** @type {string[]}*/
+		const navigationTo = navigation.to?.url.pathname.replace(/\/$/,'').split("/")??[];
+		const cond1 = (navigationTo.length < route.length && route[navigationTo.length - 1] == navigationTo[navigationTo.length - 1]) || navigationTo[1] == '';
+		isBack = (cond1)?true:false;
+	});
+
 	onNavigate(async (navigation)=>{
+		/** @type {string[]}*/
+		const navigationTo = navigation.to?.url.pathname.replace(/\/$/,'').split("/")??[];
+
+		if (route.length == navigationTo.length && route[route.length - 1] == navigationTo[navigationTo.length - 1]) return;
 		if (!document.startViewTransition) return;
 		if (touchX != -1 && isSwiping) {
-			console.log("!!!");
 			if (touchX < 25) {
 				touchX = -1;
 				isSwiping = false;
@@ -49,7 +64,7 @@
 <svelte:window onpointerdown={(e)=>{touchX = Math.floor(e.clientX); isSwiping = false}} onpointermove={(e)=>{if (e.buttons === 1) {isSwiping = true} else { isSwiping = false }}}/>
 <Navigator />
 <div class="main" bind:this={mainElement}>
-	<div class="container">
+	<div class="container" class:back={isBack}>
 		{@render children()}
 	</div>
 </div>
@@ -64,7 +79,7 @@
 		navigation: auto;
 	}
 	
-	@keyframes old {
+	@keyframes old-desktop {
 		from {
 			transform: translateX(0);
 			opacity: 1;
@@ -74,7 +89,7 @@
 			opacity: 0;
 		}
 	}
-	@keyframes new {
+	@keyframes new-desktop {
 		from {
 			transform: translateX(100px);
 			opacity: 0;
@@ -85,15 +100,37 @@
 		}
 	}
 
+	:global(:root) {
+		--animation-duration: .2s;
+	}
+
 	::view-transition-old(container) {
-		animation-name: old;
+		animation-name: old-desktop;
+		animation-duration: var(--animation-duration);
 		z-index: 0;
 		position: fixed;
 		top: 0;
 	}
 	::view-transition-new(container) {
-		animation-name: new;
+		animation-name: new-desktop;
+		animation-duration: var(--animation-duration);
 		z-index: 1;
+		position: fixed;
+		top: 0;
+	}
+	::view-transition-old(container-back) {
+		animation-name: new-desktop;
+		animation-direction: reverse;
+		animation-duration: var(--animation-duration);
+		z-index: 1;
+		position: fixed;
+		top: 0;
+	}
+	::view-transition-new(container-back) {
+		animation-name: old-desktop;
+		animation-direction: reverse;
+		animation-duration: var(--animation-duration);
+		z-index: 0;
 		position: fixed;
 		top: 0;
 	}
@@ -119,6 +156,9 @@
 		"sub";
 		grid-template-rows: min-content 1fr;
 		grid-template-columns: min(900px, 100vw);
+	}
+	.container.back {
+		view-transition-name: container-back;
 	}
 	.debug {
 		position: fixed;
