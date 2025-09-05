@@ -10,6 +10,10 @@
 	let screenX = $state();
 	let isSwiping = $state(false);
 
+	let useDebug = $state(false);
+
+	let mainElement = $state();
+
 	onMount(()=>{
 		screenX = window.innerWidth;
 	});
@@ -17,6 +21,7 @@
 	onNavigate(async (navigation)=>{
 		if (!document.startViewTransition) return;
 		if (touchX != -1 && isSwiping) {
+			console.log("!!!");
 			if (touchX < 25) {
 				touchX = -1;
 				isSwiping = false;
@@ -41,13 +46,19 @@
 <svelte:head>
 	<link rel="icon" href={favicon} />
 </svelte:head>
-<svelte:window onpointerdown={(e)=>{touchX = e.screenX; isSwiping = false}} onpointermove={(e)=>{isSwiping = true}}/>
+<svelte:window onpointerdown={(e)=>{touchX = Math.floor(e.clientX); isSwiping = false}} onpointermove={(e)=>{if (e.buttons === 1) {isSwiping = true} else { isSwiping = false }}}/>
 <Navigator />
-<div class="main">
+<div class="main" bind:this={mainElement}>
 	<div class="container">
 		{@render children()}
 	</div>
 </div>
+{#if useDebug}
+<div class="debug">
+	<p>{touchX}</p>
+	<p>{isSwiping}</p>
+</div>
+{/if}
 <style>
 	@view-transition {
 		navigation: auto;
@@ -89,7 +100,7 @@
 	.main {
 		background: var(--default-primary);
 		height: calc(100svh - 1px);
-		width: 100%;
+		width: 100vw;
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -108,5 +119,17 @@
 		"sub";
 		grid-template-rows: min-content 1fr;
 		grid-template-columns: min(900px, 100vw);
+	}
+	.debug {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100dvh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		pointer-events: none;
 	}
 </style>
