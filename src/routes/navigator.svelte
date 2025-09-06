@@ -33,7 +33,7 @@
     <ul>
         {#each menus as menu}
         <li>
-            <a href="{menu.href}" class:active={menu.path===currentActive} onclick={()=>directionDetector(menu.path)}}>
+            <a href="{menu.href}" class:active={menu.path===currentActive} onclick={()=>directionDetector(menu.path)}>
                 <span class="icon"><i class="{menu.icon}"></i></span>
                 <span class="text">{menu.label}</span>
             </a>
