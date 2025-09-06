@@ -21,7 +21,7 @@
 
 	let title = $derived(page.data.title);
 
-	let parentTitle = $derived(page.data.parent.title);
+	let parentTitle = $derived(page.data.parent?.title);
 
 	onMount(()=>{
 		screenX = window.innerWidth;
