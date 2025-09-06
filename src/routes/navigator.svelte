@@ -7,7 +7,7 @@
         { path: 'review', href: '/review', icon: 'fas fa-pencil', label: '나의 리뷰'},
         { path: 'favorite', href: '/favorite', icon: 'fas fa-star', label: '즐겨찾기'},
         { path: 'menu', href: '/menu', icon: 'fas fa-ellipsis', label: '더보기'},
-    ])
+    ]);
 </script>
 <div class="navigator">
     <ul>
