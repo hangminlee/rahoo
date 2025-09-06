@@ -5,6 +5,8 @@
 
     let { direction = $bindable() } = $props();
 
+    $inspect(direction);
+
     const menus = $state([
         { path: '', href: '/', icon: 'fas fa-home', label: '홈'},
         { path: 'find', href: '/find', icon: 'fas fa-map-location-dot', label: '식당 찾기'},
