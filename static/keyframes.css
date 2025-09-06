@@ -1,4 +1,4 @@
-@keyframes old-desktop {
+@keyframes old-desktop-toleft {
 		from {
 			transform: translateX(0);
 			opacity: 1;
@@ -8,9 +8,29 @@
 			opacity: 0;
 		}
 }
-@keyframes new-desktop {
+@keyframes new-desktop-toleft {
 		from {
 			transform: translateX(100px);
+			opacity: 0;
+		}
+		to {
+			transform: translateX(0%);
+			opacity: 1;
+		}
+}
+@keyframes old-desktop-toright {
+		from {
+			transform: translateX(0);
+			opacity: 1;
+		}
+		to {
+			transform: translateX(10px);
+			opacity: 0;
+		}
+}
+@keyframes new-desktop-toright {
+		from {
+			transform: translateX(-100px);
 			opacity: 0;
 		}
 		to {
