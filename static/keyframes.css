@@ -48,7 +48,7 @@
 			filter: brightness(1);
 		}
 		to {
-			transform: translateX(-10px);
+			transform: translateX(-10%);
 			background-color: #0009;
 			filter: brightness(0.5);
 		}
@@ -71,7 +71,7 @@
 	}
 	@keyframes new-toright {
 		from {
-			transform: translateX(-10px);
+			transform: translateX(-10%);
 			background-color: #0009;
 			filter: brightness(0.5);
 		}
