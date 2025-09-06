@@ -5,7 +5,7 @@
 	import Navigator from './navigator.svelte';
 	import { page } from '$app/state';
 
-	let { children } = $props();
+	let { data, children } = $props();
 
 	let touchX = $state(-1);
 	let screenX = $state();
@@ -19,7 +19,7 @@
 
 	let isBack = $state(false);
 
-	let title = $derived(page.data.title);
+	let title = $derived(page.data.title??data.title);
 
 	let parentTitle = $derived(page.data.parent?.title);
 
