@@ -5,8 +5,6 @@
 
     let { direction = $bindable() } = $props();
 
-    $inspect(direction);
-
     const menus = $state([
         { path: '', href: '/', icon: 'fas fa-home', label: '홈'},
         { path: 'find', href: '/find', icon: 'fas fa-map-location-dot', label: '식당 찾기'},
@@ -18,7 +16,6 @@
     function directionDetector (path) {
         const currentIndex = menus.findIndex((element)=>element.path == currentActive);
         const targetIndex = menus.findIndex((element)=>element.path == path);
-        console.log(currentIndex,targetIndex);
 
         if (currentIndex != -1 && targetIndex != -1) {
             if (targetIndex > currentIndex) {
