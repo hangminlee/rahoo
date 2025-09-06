@@ -40,7 +40,6 @@
 	});
 
 	afterNavigate((navigation)=>{
-		pageDirection = 'forward';
 	})
 
 	onNavigate(async (navigation)=>{
