@@ -14,6 +14,7 @@ export async function load({url}) {
     ];
 
     return {
-        title: genre[genre.findIndex(x=>x.href.includes(url.pathname))]?.label
+        genre: genre[genre.findIndex(x=>x.href.includes(url.pathname))]?.label,
+        title: '장르'
     }
 }
