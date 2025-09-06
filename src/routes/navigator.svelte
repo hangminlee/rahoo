@@ -16,8 +16,8 @@
     ]);
 
     function directionDetector (path) {
-        const currentIndex = menus.findIndex((element)=>element == currentActive);
-        const targetIndex = menus.findIndex((element)=>element == path);
+        const currentIndex = menus.findIndex((element)=>element.path == currentActive);
+        const targetIndex = menus.findIndex((element)=>element.path == path);
         console.log(currentIndex,targetIndex);
 
         if (currentIndex != -1 && targetIndex != -1) {
