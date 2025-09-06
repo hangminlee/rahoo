@@ -40,6 +40,7 @@
 	});
 
 	afterNavigate((navigation)=>{
+		setTimeout(()=>{pageDirection = 'forward'}, 200)
 	})
 
 	onNavigate(async (navigation)=>{
