@@ -5,6 +5,8 @@
 	import Navigator from './navigator.svelte';
 	import { page } from '$app/state';
 
+	import "/static/keyframes.css";
+
 	let { data, children } = $props();
 
 	let touchX = $state(-1);
