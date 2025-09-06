@@ -1,6 +1,10 @@
 <script>
     import { page } from "$app/state";
 
+    let currentActive = page.data.slug;
+
+    let { direction = $bindable() } = $props();
+
     const menus = $state([
         { path: '', href: '/', icon: 'fas fa-home', label: '홈'},
         { path: 'find', href: '/find', icon: 'fas fa-map-location-dot', label: '식당 찾기'},
@@ -8,12 +12,28 @@
         { path: 'favorite', href: '/favorite', icon: 'fas fa-star', label: '즐겨찾기'},
         { path: 'menu', href: '/menu', icon: 'fas fa-ellipsis', label: '더보기'},
     ]);
+
+    function directionDetector (path) {
+        const currentIndex = menus.findIndex((element)=>element == currentActive);
+        const targetIndex = menus.findIndex((element)=>element == path);
+
+        if (currentIndex != -1 && targetIndex != -1) {
+            if (targetIndex > currentIndex) {
+                direction = 'forward';
+            } else {
+                direction = 'backward';
+            }
+        } else {
+            direction = 'forward';
+        }
+    }
+
 </script>
 <div class="navigator">
     <ul>
         {#each menus as menu}
         <li>
-            <a href="{menu.href}" class:active={menu.path===page.data.slug}>
+            <a href="{menu.href}" class:active={menu.path===currentActive} onclick={()=>directionDetector(menu.path)}}>
                 <span class="icon"><i class="{menu.icon}"></i></span>
                 <span class="text">{menu.label}</span>
             </a>
