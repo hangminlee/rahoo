@@ -2,6 +2,7 @@
 export async function load({parent}) {
     const parents = await parent();
     return {
-        ...parents
+        parent: parents,
+        title: parents.genre
     }    
 }
