@@ -1,5 +1,5 @@
 <script>
-	import { beforeNavigate, onNavigate } from '$app/navigation';
+	import { beforeNavigate, onNavigate, afterNavigate } from '$app/navigation';
 	import favicon from '$lib/assets/favicon.svg';
 	import { onMount } from 'svelte';
 	import Navigator from './navigator.svelte';
@@ -39,8 +39,11 @@
 		isBack = (cond1)?true:false;
 	});
 
-	onNavigate(async (navigation)=>{
+	afterNavigate((navigation)=>{
 		pageDirection = 'forward';
+	})
+
+	onNavigate(async (navigation)=>{
 		/** @type {string[]}*/
 		const navigationTo = navigation.to?.url.pathname.replace(/\/$/,'').split("/")??[];
 
