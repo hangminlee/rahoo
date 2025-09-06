@@ -26,6 +26,7 @@
 	let parentTitle = $derived(page.data.parent?.title);
 
 	let pageDirection = $state('forward');
+	$inspect(pageDirection);
 
 	onMount(()=>{
 		screenX = window.innerWidth;
