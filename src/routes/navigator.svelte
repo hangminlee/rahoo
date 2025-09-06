@@ -1,7 +1,7 @@
 <script>
     import { page } from "$app/state";
 
-    let currentActive = page.data.slug;
+    let currentActive = $derived(page.data.slug);
 
     let { direction = $bindable() } = $props();
 
