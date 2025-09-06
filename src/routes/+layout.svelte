@@ -25,11 +25,16 @@
 
 	let parentTitle = $derived(page.data.parent?.title);
 
+	let pageDirection = $state('forward');
+
 	onMount(()=>{
 		screenX = window.innerWidth;
 	});
 
 	beforeNavigate((navigation)=>{
+
+		pageDirection = 'forward';
+
 		/** @type {string[]}*/
 		const navigationTo = navigation.to?.url.pathname.replace(/\/$/,'').split("/")??[];
 		const cond1 = (navigationTo.length < route.length && route[navigationTo.length - 1] == navigationTo[navigationTo.length - 1]) || navigationTo[1] == '';
@@ -69,9 +74,9 @@
 	<title>{title}{parentTitle?' < '+parentTitle:''}</title>
 </svelte:head>
 <svelte:window onpointerdown={(e)=>{touchX = Math.floor(e.clientX); isSwiping = false}} onpointermove={(e)=>{if (e.buttons === 1) {isSwiping = true} else { isSwiping = false }}}/>
-<Navigator />
+<Navigator bind:direction={pageDirection} />
 <div class="main" bind:this={mainElement}>
-	<div class="container" class:back={isBack}>
+	<div class="container" class:back={isBack||(pageDirection == 'backward'?true:false)}>
 		{@render children()}
 	</div>
 </div>
