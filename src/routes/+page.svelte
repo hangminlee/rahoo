@@ -16,7 +16,7 @@
 </script>
 <div class="header">
     <p>라멘 덕후들만을 위한 구르메-</p>
-    <h1>RAHOO</h1>
+    <h1>RAFOO</h1>
 </div>
 <div class="sub">
     <div class="search-sect">
