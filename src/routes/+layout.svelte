@@ -33,9 +33,6 @@
 	});
 
 	beforeNavigate((navigation)=>{
-
-		pageDirection = 'forward';
-
 		/** @type {string[]}*/
 		const navigationTo = navigation.to?.url.pathname.replace(/\/$/,'').split("/")??[];
 		const cond1 = (navigationTo.length < route.length && route[navigationTo.length - 1] == navigationTo[navigationTo.length - 1]) || navigationTo[1] == '';
@@ -43,6 +40,7 @@
 	});
 
 	onNavigate(async (navigation)=>{
+		pageDirection = 'forward';
 		/** @type {string[]}*/
 		const navigationTo = navigation.to?.url.pathname.replace(/\/$/,'').split("/")??[];
 
