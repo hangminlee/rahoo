@@ -98,28 +98,28 @@
 	}
 
 	::view-transition-old(container) {
-		animation-name: old-desktop-toleft;
+		animation-name: old-toleft;
 		animation-duration: var(--animation-duration);
 		z-index: 0;
 		position: fixed;
 		top: 0;
 	}
 	::view-transition-new(container) {
-		animation-name: new-desktop-toleft;
+		animation-name: new-toleft;
 		animation-duration: var(--animation-duration);
 		z-index: 1;
 		position: fixed;
 		top: 0;
 	}
 	::view-transition-old(container-back) {
-		animation-name: old-desktop-toright;
+		animation-name: old-toright;
 		animation-duration: var(--animation-duration);
 		z-index: 1;
 		position: fixed;
 		top: 0;
 	}
 	::view-transition-new(container-back) {
-		animation-name: new-desktop-toright;
+		animation-name: new-toright;
 		animation-duration: var(--animation-duration);
 		z-index: 0;
 		position: fixed;
