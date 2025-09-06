@@ -5,7 +5,7 @@
 	import Navigator from './navigator.svelte';
 	import { page } from '$app/state';
 
-	import "/keyframes.css";
+	import "$lib/assets/app.css";
 
 	let { data, children } = $props();
 
