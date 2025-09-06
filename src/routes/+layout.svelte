@@ -83,27 +83,6 @@
 	@view-transition {
 		navigation: auto;
 	}
-	
-	@keyframes old-desktop {
-		from {
-			transform: translateX(0);
-			opacity: 1;
-		}
-		to {
-			transform: translateX(-10px);
-			opacity: 0;
-		}
-	}
-	@keyframes new-desktop {
-		from {
-			transform: translateX(100px);
-			opacity: 0;
-		}
-		to {
-			transform: translateX(0%);
-			opacity: 1;
-		}
-	}
 
 	:global(:root) {
 		--animation-duration: .2s;
