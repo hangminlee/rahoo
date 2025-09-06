@@ -1,4 +1,4 @@
-@import url(keyframes.css)
+@import src('keyframes.css')
 
 :root {
     --default-background: #f1efeb;
