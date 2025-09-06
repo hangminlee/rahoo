@@ -19,7 +19,9 @@
 
 	let isBack = $state(false);
 
-$inspect(page.data);
+	let title = $derived(page.data.title);
+
+	let parentTitle = $derived(page.data.parent.title);
 
 	onMount(()=>{
 		screenX = window.innerWidth;
@@ -62,6 +64,7 @@ $inspect(page.data);
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
+	<title>{title}{parentTitle?' < '+parentTitle:''}</title>
 </svelte:head>
 <svelte:window onpointerdown={(e)=>{touchX = Math.floor(e.clientX); isSwiping = false}} onpointermove={(e)=>{if (e.buttons === 1) {isSwiping = true} else { isSwiping = false }}}/>
 <Navigator />
