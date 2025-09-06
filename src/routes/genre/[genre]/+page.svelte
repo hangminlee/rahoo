@@ -1,7 +1,7 @@
 <script>
     let { data } = $props();
 </script>
-<h1>너무나 놀라운... {data.title}</h1>
+<h1>너무나 놀라운... {data.genre}</h1>
 <div class="sub">
     서브컨텐츠
     <a href="./">한 단계 올라가기</a>
